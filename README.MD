@@ -17,9 +17,9 @@ Vue.use(toast, '#abcdef');
 
 > 使用 loading 加载
 
-| Param |  Type  | Default | Description      |
-| :---- | :----: | :-----: | :--------------- |
-| msg   | String |         | loading 提示语句 |
+| Param |  Type  | Description      |
+| :---- | :----: | :--------------- |
+| msg   | String | loading 提示语句 |
 
 ```vue
 <template>
@@ -66,14 +66,14 @@ export default {
 
 > toast 弹窗
 
-| Param                   |   Type   | Default | Description                                          |
-| :---------------------- | :------: | :-----: | :--------------------------------------------------- |
-| {options.title}         |  String  |         | 标题                                                 |
-| {options.msg}           |  String  |         | 内容                                                 |
-| {options.button}        |  String  |         | 确认按钮文字                                         |
-| {options.type}          |  Number  |         | 提示类型，0、info 提示 1、success 提示 2、error 提示 |
-| {options.close}         | Boolean  | String  | 取消                                                 | 显示取消按钮或者配置取消按钮内容 |
-| {options.callback(res)} | Function |         | 按钮点击回调，确定点击返回 true，反之返回 false      |
+| Param                   |      Type       | Description                                          |
+| :---------------------- | :-------------: | :--------------------------------------------------- |
+| {options.title}         |     String      | 标题                                                 |
+| {options.msg}           |     String      | 内容                                                 |
+| {options.button}        |     String      | 确认按钮文字                                         |
+| {options.type}          |     Number      | 提示类型，0、info 提示 1、success 提示 2、error 提示 |
+| {options.close}         | String\|Bollean | 显示取消按钮或者配置取消按钮内容                     |
+| {options.callback(res)} |    Function     | 按钮点击回调，确定点击返回 true，反之返回 false      |
 
 ```vue
 <template>
