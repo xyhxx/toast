@@ -1,32 +1,28 @@
 <template>
   <div>
-    <div id="xyhToast" v-show="isShowToast">
-      <div id="xyhToastInfo">
+    <div id="xyhDialog" v-show="isShowDialog">
+      <div id="xyhDialogInfo">
         <div id="iconBg" :style="imgBgStyle">
           <img id="stateIcon" :class="animatCss" :src="imgIcon" />
         </div>
-        <div id="xyhToastTitle">{{ toastTitle }}</div>
-        <div id="xyhToastMsg">{{ toastMsg }}</div>
-        <div id="xyhToastInfoBtnGroup" v-show="showToastBtn">
+        <div id="xyhDialogTitle">{{ dialogTitle }}</div>
+        <div id="xyhDialogMsg">{{ dialogMsg }}</div>
+        <div id="xyhDialogInfoBtnGroup" v-show="showDialogBtn">
           <div
-            id="xyhToastInfoBtnClose"
+            id="xyhDialogInfoBtnClose"
             class="btnGroupItems"
             data-state="false"
             v-show="showCancel"
             cancel
-            @click="toastBtnClick"
-          >
-            {{ toastCancelInfo }}
-          </div>
+            @click="dialogBtnClick"
+          >{{ dialogCancelInfo }}</div>
           <div
-            id="xyhToastInfoBtn"
+            id="xyhDialogInfoBtn"
             class="btnGroupItems"
             data-state="true"
             :style="{ backgroundColor: btnColor }"
-            @click="toastBtnClick"
-          >
-            {{ toastPassInfo }}
-          </div>
+            @click="dialogBtnClick"
+          >{{ dialogPassInfo }}</div>
         </div>
       </div>
     </div>
@@ -43,107 +39,109 @@
 </template>
 
 <script>
-import infoBg from './img/infoBg.png';
-import infoIcon from './img/info.png';
-import successBg from './img/successBg.png';
-import successIcon from './img/success.png';
-import errorBg from './img/errorBg.png';
-import errorIcon from './img/error.png';
+import infoBg from "./img/infoBg.png";
+import infoIcon from "./img/info.png";
+import successBg from "./img/successBg.png";
+import successIcon from "./img/success.png";
+import errorBg from "./img/errorBg.png";
+import errorIcon from "./img/error.png";
 
 export default {
-  name: 'xyhToast',
+  name: "xyhDialog",
   data() {
     return {
-      isShowToast: false,
+      isShowDialog: false,
       isShowLoading: false,
-      loadingMsg: '',
-      showToastBtn: false,
+      loadingMsg: "",
+      showDialogBtn: false,
       showCancel: false,
-      btnColor: '#234173',
+      btnColor: "#234173",
       imgBgStyle: {
-        backgroundImage: 'url(' + infoBg + ')',
+        backgroundImage: "url(" + infoBg + ")",
       },
       imgIcon: infoIcon,
-      animatCss: ['vivify'],
+      animatCss: ["vivify"],
       typeArr: [
         {
           icon: infoIcon,
           iconBg: infoBg,
-          cls: 'swoopInTop',
+          cls: "swoopInTop",
         },
         {
           icon: successIcon,
           iconBg: successBg,
-          cls: 'flipInY',
+          cls: "flipInY",
         },
         {
           icon: errorIcon,
           iconBg: errorBg,
-          cls: 'jumpInRight',
+          cls: "jumpInRight",
         },
       ],
-      toastTitle: '',
-      toastMsg: '',
-      toastCancelInfo: '',
-      toastPassInfo: '',
+      dialogTitle: "",
+      dialogMsg: "",
+      dialogCancelInfo: "",
+      dialogPassInfo: "",
     };
   },
   methods: {
     showLoading(msg) {
-      msg = msg || '正在加载中';
+      msg = msg || "正在加载中";
       this.isShowLoading = true;
       this.loadingMsg = msg;
     },
     hideLoading() {
       this.isShowLoading = false;
     },
-    showToast({
-      title = '',
-      msg = '',
+    showDialog({
+      title = "",
+      msg = "",
       duration = 0,
-      button = '确定',
+      button = "确定",
       close = true,
       type = 0,
       callback = null,
     } = {}) {
-      this.toastTitle = title;
-      this.toastMsg = msg;
+      this.dialogTitle = title;
+      this.dialogMsg = msg;
       if (duration > 0) {
-        this.showToastBtn = false;
-        setTimeout(() => this.hideToast(), duration);
+        this.showDialogBtn = false;
+        setTimeout(() => this.hideDialog(), duration);
       } else {
-        this.showToastBtn = true;
+        this.showDialogBtn = true;
         // 判断传入的close为boolean还是string
         if (close || close.length > 0) {
           this.showCancel = true;
-          typeof close === 'boolean'
-            ? (this.toastCancelInfo = '取消')
-            : (this.toastCancelInfo = close);
+          typeof close === "boolean"
+            ? (this.dialogCancelInfo = "取消")
+            : (this.dialogCancelInfo = close);
         }
       }
-      this.toastPassInfo = button;
-      const typeInfo = this.typeArr[type] ? this.typeArr[type] : this.typeArr[0];
+      this.dialogPassInfo = button;
+      const typeInfo = this.typeArr[type]
+        ? this.typeArr[type]
+        : this.typeArr[0];
       // 选择class样式
-      this.animatCss = ['vivify', typeInfo.cls];
-      this.imgBgStyle = { backgroundImage: 'url(' + typeInfo.iconBg + ')' };
+      this.animatCss = ["vivify", typeInfo.cls];
+      this.imgBgStyle = { backgroundImage: "url(" + typeInfo.iconBg + ")" };
       this.imgIcon = typeInfo.icon;
-      this.isShowToast = true;
-      this.toastCallBack = callback;
+      this.isShowDialog = true;
+      this.dialogCallBack = callback;
     },
-    hideToast() {
-      this.isShowToast = false;
-      this.animatCss = ['vivify'];
+    hideDialog() {
+      this.isShowDialog = false;
+      this.animatCss = ["vivify"];
     },
-    toastBtnClick(e) {
+    dialogBtnClick(e) {
       const state = e.target.dataset.state;
-      this.toastCallBack(state);
-      this.hideToast();
+      this.dialogCallBack(state);
+      this.hideDialog();
     },
-    toastCallBack() {},
+    dialogCallBack() {},
   },
 };
 </script>
 
 <style>
-@import './wxToast.min.css';
+@import "./wxDialog.min.css";
 </style>
