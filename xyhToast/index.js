@@ -7,7 +7,7 @@ const obj = {
     toastEl.$mount(document.createElement('div'));
     document.body.appendChild(toastEl.$el);
     // 修改按钮主题颜色
-    color.length > 0 ? (toastEl.$data.btnColor = color) : '';
+    color && color.length > 0 ? (toastEl.$data.btnColor = color) : '';
 
     Vue.prototype.$toast = toastEl;
   },
