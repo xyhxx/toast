@@ -10,7 +10,7 @@ const obj = {
     // 修改按钮主题颜色
     color && color.length > 0 ? (toastEl.$data.btnColor = color) : '';
 
-    Vue.prototype.$toast = toastEl;
+    Vue.prototype.$xyhDialog = toastEl;
   },
 };
 
