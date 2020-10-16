@@ -1,4 +1,4 @@
-# vue 的 taost 插件
+# vue 的 dialog 插件
 
 > css 动画样式使用的 vivify 动画组件中的部分动画
 
@@ -108,3 +108,4 @@ export default {
 
 <style></style>
 ```
+> 出现问题欢迎反馈至<https://github.com/xyhxx/toast>，谢谢！

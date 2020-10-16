@@ -1,7 +1,7 @@
 {
   "name": "vue-xyh-dialog",
-  "version": "2.1.7",
-  "description": "css 动画样式使用的 vivify 动画组件中的部分动画",
+  "version": "2.1.9",
+  "description": "基于vue2书写的loading和dialog插件",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,10 +12,10 @@
   },
   "keywords": [
     "vue",
+    "xyh",
+    "dialog",
     "vue-xyh",
-    "dialogv",
-    "ue-xyh-dialog",
-    "xyh"
+    "vue-xyh-dialog"
   ],
   "author": "xyh_xx",
   "license": "ISC",
