@@ -115,3 +115,4 @@ export default {
 
 
 > 出现问题欢迎反馈至<https://github.com/xyhxx/toast>，谢谢！
+> vue3版本<https://github.com/xyhxx/Vue3Plugins>
