@@ -1,6 +1,6 @@
 {
   "name": "vue-xyh-dialog",
-  "version": "2.3.0",
+  "version": "3.1.0",
   "description": "基于vue2书写的loading和dialog插件",
   "main": "index.js",
   "scripts": {
