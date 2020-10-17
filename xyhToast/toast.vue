@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div id="xyhDialog" v-show="isShowDialog">
+    <div v-show="isShowDialog" id="xyhDialog">
       <div id="xyhDialogInfo">
         <div id="iconBg" :style="imgBgStyle">
           <img id="stateIcon" :class="animatCss" :src="imgIcon" />
         </div>
         <div id="xyhDialogTitle">{{ dialogTitle }}</div>
         <div id="xyhDialogMsg">{{ dialogMsg }}</div>
-        <div id="xyhDialogInfoBtnGroup" v-show="showDialogBtn">
+        <div v-show="showDialogBtn" id="xyhDialogInfoBtnGroup">
           <div
+            v-show="showCancel"
             id="xyhDialogInfoBtnClose"
             class="btnGroupItems"
             data-state="false"
-            v-show="showCancel"
             cancel
             @click="dialogBtnClick"
           >{{ dialogCancelInfo }}</div>
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div id="xyhLoading" v-show="isShowLoading">
+    <div v-show="isShowLoading" id="xyhLoading">
       <div id="xyhLoadingInfo">
         <img src="./img/loadingBg.png" />
         <div id="xyhLoadingInfoContent">
@@ -47,7 +47,7 @@ import errorBg from "./img/errorBg.png";
 import errorIcon from "./img/error.png";
 
 export default {
-  name: "xyhDialog",
+  name: "XyhDialog",
   data() {
     return {
       isShowDialog: false,
@@ -134,7 +134,7 @@ export default {
     },
     dialogBtnClick(e) {
       const state = e.target.dataset.state;
-      this.dialogCallBack(state);
+      this.dialogCallBack(state === "true");
       this.hideDialog();
     },
     dialogCallBack() {},
